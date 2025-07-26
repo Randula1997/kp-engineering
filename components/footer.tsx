@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
 export function Footer() {
+  const currentYear = new Date().getFullYear();
   return (
     <motion.footer
       initial={{ opacity: 0 }}
@@ -64,7 +65,7 @@ export function Footer() {
         </div>
 
         <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-          <p>&copy; 2024 KP Engineering. All rights reserved.</p>
+          <p>&copy; {currentYear} KP Engineering. All rights reserved.</p>
         </div>
       </div>
     </motion.footer>

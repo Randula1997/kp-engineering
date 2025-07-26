@@ -6,6 +6,8 @@ import { useTheme } from 'next-themes';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Moon, Sun, Menu, X } from 'lucide-react';
+import Image from 'next/image';
+import KPLogo from '../assets/kp.png';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +38,8 @@ export function Navbar() {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           <div className="flex items-center space-x-4">
-            <div className="flex-shrink-0">
+            <div className="flex flex-shrink-0 items-center gap-4">
+              <Image src={KPLogo} width={40} height={40} alt={'logo'} />
               <h1 className="text-xl font-bold text-primary">KP Engineering</h1>
             </div>
           </div>

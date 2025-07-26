@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useResizeObserver } from '@/hooks/use-resize';
 
 interface CountryMarker {
   country: string;
@@ -14,15 +15,16 @@ export function InteractiveGlobe() {
   const mountRef = useRef<HTMLDivElement>(null);
   const [Globe, setGlobe] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const { width, height } = useResizeObserver(mountRef);
 
   const countries: CountryMarker[] = [
-    { country: 'Sri Lanka', lat: 7.8731, lng: 80.7718, color: '#059669' },
-    { country: 'Maldives', lat: 3.2028, lng: 73.2207, color: '#059669' },
-    { country: 'Seychelles', lat: -4.6796, lng: 55.4920, color: '#059669' },
-    { country: 'Dubai', lat: 25.2048, lng: 55.2708, color: '#059669' },
-    { country: 'Vietnam', lat: 14.0583, lng: 108.2772, color: '#059669' },
-    { country: 'Bangladesh', lat: 23.6850, lng: 90.3563, color: '#059669' },
-    { country: 'Nepal', lat: 28.3949, lng: 84.1240, color: '#059669' },
+    { country: 'Sri Lanka', lat: 7.8731, lng: 80.7718, color: 'red' },
+    { country: 'Maldives', lat: 3.2028, lng: 73.2207, color: 'red' },
+    { country: 'Seychelles', lat: -4.6796, lng: 55.4920, color: 'red' },
+    { country: 'Dubai', lat: 25.2048, lng: 55.2708, color: 'red' },
+    { country: 'Vietnam', lat: 14.0583, lng: 108.2772, color: 'red' },
+    { country: 'Bangladesh', lat: 23.6850, lng: 90.3563, color: 'red' },
+    { country: 'Nepal', lat: 28.3949, lng: 84.1240, color: 'red' },
   ];
 
   useEffect(() => {
@@ -96,8 +98,7 @@ export function InteractiveGlobe() {
       ref={mountRef}
     >
       <Globe
-        globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
-        // backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
+        globeImageUrl="//unpkg.com/three-globe@2.43.0/example/img/earth-night.jpg"
         backgroundColor="rgba(0,0,0,0)"
         pointsData={countries}
         pointLat="lat"
@@ -106,8 +107,8 @@ export function InteractiveGlobe() {
         pointAltitude={0.02}
         pointRadius={1.0}
         pointLabel="country"
-        width={Math.min(window?.innerWidth * 0.45, 600)}
-        height={Math.min(window?.innerHeight * 0.7, 600)}
+        width={width}
+        height={height}
         animateIn={true}
         showAtmosphere={true}
         atmosphereColor="#60A5FA"
