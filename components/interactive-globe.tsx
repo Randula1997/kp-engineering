@@ -16,13 +16,13 @@ export function InteractiveGlobe() {
   const [isLoading, setIsLoading] = useState(true);
 
   const countries: CountryMarker[] = [
-    { country: 'Sri Lanka', lat: 7.8731, lng: 80.7718, color: '#3B82F6' },
-    { country: 'Maldives', lat: 3.2028, lng: 73.2207, color: '#0D9488' },
-    { country: 'Seychelles', lat: -4.6796, lng: 55.4920, color: '#EA580C' },
-    { country: 'Dubai', lat: 25.2048, lng: 55.2708, color: '#DC2626' },
-    { country: 'Vietnam', lat: 14.0583, lng: 108.2772, color: '#7C3AED' },
+    { country: 'Sri Lanka', lat: 7.8731, lng: 80.7718, color: '#059669' },
+    { country: 'Maldives', lat: 3.2028, lng: 73.2207, color: '#059669' },
+    { country: 'Seychelles', lat: -4.6796, lng: 55.4920, color: '#059669' },
+    { country: 'Dubai', lat: 25.2048, lng: 55.2708, color: '#059669' },
+    { country: 'Vietnam', lat: 14.0583, lng: 108.2772, color: '#059669' },
     { country: 'Bangladesh', lat: 23.6850, lng: 90.3563, color: '#059669' },
-    { country: 'Nepal', lat: 28.3949, lng: 84.1240, color: '#D97706' },
+    { country: 'Nepal', lat: 28.3949, lng: 84.1240, color: '#059669' },
   ];
 
   useEffect(() => {
@@ -97,7 +97,8 @@ export function InteractiveGlobe() {
     >
       <Globe
         globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
-        backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
+        // backgroundImageUrl="//unpkg.com/three-globe/example/img/night-sky.png"
+        backgroundColor="rgba(0,0,0,0)"
         pointsData={countries}
         pointLat="lat"
         pointLng="lng"
