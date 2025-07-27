@@ -1,33 +1,63 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { useTheme } from 'next-themes';
-import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Moon, Sun, Menu, X } from 'lucide-react';
-import Image from 'next/image';
-import KPLogo from '../assets/kp.png';
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Phone, Menu } from "lucide-react";
+import Image from "next/image";
+import KPLogo from "../assets/kp.png";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
   const { theme, setTheme } = useTheme();
 
   const navItems = [
-    { href: '#home', label: 'Home' },
-    { href: '#services', label: 'Services' },
-    { href: '#products', label: 'Products' },
-    { href: '#about', label: 'About' },
-    { href: '#contact', label: 'Contact' },
+    { href: "#home", label: "Home" },
+    { href: "#services", label: "Services" },
+    { href: "#products", label: "Products" },
+    { href: "#about", label: "About" },
+    { href: "#contact", label: "Contact" },
   ];
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
     setIsOpen(false);
   };
+
+  useEffect(() => {
+    const sections = navItems.map((item) => document.querySelector(item.href));
+    if (!sections.length) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(`#${entry.target.id}`);
+          }
+        });
+      },
+      {
+        rootMargin: "-50% 0px -50% 0px", // triggers when section is roughly centered vertically
+        threshold: 0,
+      }
+    );
+
+    sections.forEach((section) => {
+      if (section) observer.observe(section);
+    });
+
+    return () => {
+      sections.forEach((section) => {
+        if (section) observer.unobserve(section);
+      });
+    };
+  }, [navItems]);
 
   return (
     <motion.nav
@@ -37,38 +67,43 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
+          {/* Logo left */}
           <div className="flex items-center space-x-4">
             <div className="flex flex-shrink-0 items-center gap-4">
-              <Image src={KPLogo} width={40} height={40} alt={'logo'} />
+              <Image src={KPLogo} width={40} height={40} alt={"logo"} />
               <h1 className="text-xl font-bold text-primary">KP Engineering</h1>
             </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          {/* Desktop Navigation centered */}
+          <div className="hidden md:flex flex-1 justify-center space-x-10">
             {navItems.map((item) => (
               <button
                 key={item.href}
                 onClick={() => scrollToSection(item.href)}
-                className="text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
+                className={`text-base font-medium transition-colors ${
+                  activeSection === item.href
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-primary"
+                }`}
               >
                 {item.label}
               </button>
             ))}
           </div>
 
+          {/* Right side: phone & mobile menu */}
           <div className="flex items-center space-x-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-            >
-              <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-              <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-              <span className="sr-only">Toggle theme</span>
-            </Button>
+            <Phone className="w-6 h-6 text-primary" />
+            <div className="flex flex-col flex-shrink-0 items-center gap-1 mr-4">
+              <h6 className="text-sm font-bold text-primary">
+                +94 766 166 886
+              </h6>
+              <h6 className="text-sm font-bold text-primary">
+                +94 766 166 886
+              </h6>
+            </div>
 
-            {/* Mobile menu button */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="md:hidden">

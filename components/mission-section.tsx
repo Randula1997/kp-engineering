@@ -1,29 +1,33 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { Target, Users, Award, Clock } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Target, Users, Award, Clock } from "lucide-react";
 
 export function MissionSection() {
   const features = [
     {
       icon: Target,
-      title: 'Mission Focus',
-      description: 'To be your reliable partner, ensuring your facilities run efficiently and effectively with minimal downtime.',
+      title: "Mission Focus",
+      description:
+        "To be your reliable partner, ensuring your facilities run efficiently and effectively with minimal downtime.",
     },
     {
       icon: Users,
-      title: 'Expert Team',
-      description: 'Our skilled professionals bring years of experience in hospitality engineering solutions.',
+      title: "Expert Team",
+      description:
+        "Our skilled professionals bring years of experience in hospitality engineering solutions.",
     },
     {
       icon: Award,
-      title: 'Quality Excellence',
-      description: 'We maintain the highest standards in all our services and products.',
+      title: "Quality Excellence",
+      description:
+        "We maintain the highest standards in all our services and products.",
     },
     {
       icon: Clock,
-      title: 'Commitment',
-      description: 'Dedicated to providing timely, reliable service across all our operations.',
+      title: "Commitment",
+      description:
+        "Dedicated to providing timely, reliable service across all our operations.",
     },
   ];
 
@@ -38,10 +42,13 @@ export function MissionSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Our Mission & Values
+            Leading Industrial Solutions
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Quality Excellence, Expert Team, and Unwavering Commitment to Your Success
+            With over a decade of experience, KP Engineering has established
+            itself as a trusted supplier of high- quality raw materials for
+            industrial maintenance. We partner with renowned global brands to
+            ensure our clients receive the best components for their operations.
           </p>
         </motion.div>
 
@@ -55,14 +62,14 @@ export function MissionSection() {
               viewport={{ once: true }}
               className="group"
             >
-              <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className="flex items-center justify-center w-16 h-16 mx-auto mb-6 bg-gradient-to-br from-blue-500 to-teal-500 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300">
+              <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 h-[400px] flex flex-col items-center justify-center text-center">
+                <div className="flex items-center justify-center w-16 h-16 mb-6 bg-gradient-to-br from-blue-500 to-teal-500 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300">
                   <feature.icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4 text-center">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 text-center leading-relaxed">
+                <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                   {feature.description}
                 </p>
               </div>
