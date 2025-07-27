@@ -6,7 +6,6 @@ import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Phone, Menu } from "lucide-react";
-import Image from "next/image";
 import KPLogo from "../assets/kp.png";
 
 export function Navbar() {
@@ -70,7 +69,7 @@ export function Navbar() {
           {/* Logo left */}
           <div className="flex items-center space-x-4">
             <div className="flex flex-shrink-0 items-center gap-4">
-              <Image src={KPLogo} width={40} height={40} alt={"logo"} />
+              <img src={KPLogo.src} width={40} height={40} alt="logo" />
               <h1 className="text-xl font-bold text-primary">KP Engineering</h1>
             </div>
           </div>

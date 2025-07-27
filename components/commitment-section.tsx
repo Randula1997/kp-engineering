@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Image1 from "../assets/commitment/1.jpg";
 import Image2 from "../assets/commitment/2.jpg";
 import Image3 from "../assets/commitment/3.jpg";
@@ -80,20 +79,16 @@ establishments.`}
           viewport={{ once: true }}
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-6 max-w-6xl mx-auto"
         >
-          {images.map((src, idx) => (
+          {images.map((image, idx) => (
             <motion.div
               key={idx}
               variants={itemVariants}
               className="relative w-full aspect-square rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105"
             >
-              <Image
-                src={src}
+              <img
+                src={image.src}
                 alt={`Commitment image ${idx + 1}`}
-                fill
-                className="object-cover"
-                sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 20vw"
-                priority={idx < 2} // prioritize only first two images
-                placeholder="blur"
+                className="object-cover w-full h-full"
               />
             </motion.div>
           ))}

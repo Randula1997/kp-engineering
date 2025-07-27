@@ -17,7 +17,6 @@ import {
   ChefHat,
   Sparkles,
 } from "lucide-react";
-import Image from "next/image";
 import Image1 from "../assets/services/1.jpg";
 import Image2 from "../assets/services/2.jpg";
 import Image3 from "../assets/services/3.jpg";
@@ -34,7 +33,7 @@ export function ServicesSection() {
       description:
         "Comprehensive inventory management and supply of critical spare parts to minimize downtime.",
       color: "from-blue-500 to-blue-600",
-      image: Image1,
+      image: Image1.src,
     },
     {
       icon: Snowflake,
@@ -42,7 +41,7 @@ export function ServicesSection() {
       description:
         "Complete refrigeration systems design, installation, and maintenance for hospitality needs.",
       color: "from-cyan-500 to-cyan-600",
-      image: Image2,
+      image: Image2.src,
     },
     {
       icon: Cog,
@@ -50,7 +49,7 @@ export function ServicesSection() {
       description:
         "Tailored engineering solutions and custom manufacturing to meet specific requirements.",
       color: "from-purple-500 to-purple-600",
-      image: Image3,
+      image: Image3.src,
     },
     {
       icon: Wrench,
@@ -58,7 +57,7 @@ export function ServicesSection() {
       description:
         "24/7 repair services and preventive maintenance programs for all equipment.",
       color: "from-orange-500 to-orange-600",
-      image: Image4,
+      image: Image4.src,
     },
     {
       icon: Settings,
@@ -66,7 +65,7 @@ export function ServicesSection() {
       description:
         "Complete range of auxiliary equipment and components for hospitality operations.",
       color: "from-green-500 to-green-600",
-      image: Image5,
+      image: Image5.src,
     },
     {
       icon: ChefHat,
@@ -74,7 +73,7 @@ export function ServicesSection() {
       description:
         "Full-service kitchen equipment supply, installation, and maintenance solutions.",
       color: "from-red-500 to-red-600",
-      image: Image6,
+      image: Image6.src,
     },
     {
       icon: Sparkles,
@@ -82,7 +81,7 @@ export function ServicesSection() {
       description:
         "State-of-the-art cleaning equipment and systems for hospitality environments.",
       color: "from-teal-500 to-teal-600",
-      image: Image7,
+      image: Image7.src,
     },
   ];
 
@@ -141,13 +140,10 @@ export function ServicesSection() {
                       viewport={{ once: true }}
                       className="flex justify-center w-full"
                     >
-                      <Image
+                      <img
                         src={service.image}
                         alt={service.title}
-                        width={260}
-                        height={160}
                         className="object-cover rounded-xl shadow-md"
-                        loading="lazy"
                       />
                     </motion.div>
 
